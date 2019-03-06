@@ -1,16 +1,15 @@
 /*
- * Devoir de Programmation déclarative
+ * Devoir de Programmation dÃ©clarative
  * Arthur Wenger 36000244
- * Lucas Dubart 35007797
  * 
  */
 
 object Devoir {
    def main(args: Array[String]): Unit = {
      
-     // L'ensemble des 30 faits qui apparaissent dans la base de règles
+     // L'ensemble des 30 faits qui apparaissent dans la base de rÃ¨gles
      val fait1 = Fait(1, "a des poils")
-     val fait2 = Fait(2, "est un mammifère")
+     val fait2 = Fait(2, "est un mammifÃ¨re")
      val fait3 = Fait(3, "donne du lait")
      val fait4 = Fait(4, "mange de la viande")
      val fait5 = Fait(5, "est un carnivore")
@@ -18,17 +17,17 @@ object Devoir {
      val fait7 = Fait(7, "a des griffes")
      val fait8 = Fait(8, "a les yeux vers avant")
      val fait9 = Fait(9, "a des sabots")
-     val fait10 = Fait(10, "est un ongulé")
+     val fait10 = Fait(10, "est un ongulÃ©")
      val fait11 = Fait(11, "n'est pas un carnivore")
      val fait12 = Fait(12, "est de couleur brune")
-     val fait13 = Fait(13, "a des tâches sombres")
-     val fait14 = Fait(14, "est un guépard")
+     val fait13 = Fait(13, "a des tÃ¢ches sombres")
+     val fait14 = Fait(14, "est un guÃ©pard")
      val fait15 = Fait(15, "a des raies noires")
      val fait16 = Fait(16, "est un tigre")
      val fait17 = Fait(17, "a un long cou")
      val fait18 = Fait(18, "a des longues pattes")
      val fait19 = Fait(19, "est une girafe")
-     val fait20 = Fait(20, "est un zèbre")
+     val fait20 = Fait(20, "est un zÃ¨bre")
      val fait21 = Fait(21, "a des plumes")
      val fait22 = Fait(22, "est un oiseau")
      val fait23 = Fait(23, "vole")
@@ -40,7 +39,7 @@ object Devoir {
      val fait29 = Fait(29, "est un pingouin")
      val fait30 = Fait(30, "est un aigle")
      
-     // L'ensemble des 15 règles de l'énoncé
+     // L'ensemble des 15 rÃ¨gles de l'Ã©noncÃ©
      val regle1 = Regle(1, List(fait1), List(fait2))
      val regle2 = Regle(2, List(fait3), List(fait2))
      val regle3 = Regle(3, List(fait4), List(fait5))
@@ -57,35 +56,35 @@ object Devoir {
      val regle14 = Regle(14, List(fait22, fait25, fait28, fait26), List(fait29))
      val regle15 = Regle(15, List(fait22, fait5), List(fait30))
 
-     // La base de règles
+     // La base de rÃ¨gles
      val bdr = List(regle1, regle2, regle3, regle4, regle5, regle6, regle7, regle8, regle9, regle10, regle11, regle12, regle13, regle14, regle15)
      // La base de faits initiale
      val bdf_init = List(fait3, fait4, fait6, fait12, fait15)
      // Le fait que l'on souhaite demontrer
      val hyp = fait14
      
-     // Affichage de la base de faits et de la base de règles
+     // Affichage de la base de faits et de la base de rÃ¨gles
      afficheBase(bdr, "*** Base de Faits initiale ***")
-     afficheBase(bdf_init, "*** Base de règles ***")
+     afficheBase(bdf_init, "*** Base de rÃ¨gles ***")
      
      println("******************************************************************")
-     println("===> lancement du chainage avant pour démontrer : " + hyp.intitule +"\n")
+     println("===> lancement du chainage avant pour dÃ©montrer : " + hyp.intitule +"\n")
      val (bdf_fwd, regles_util_fwd) = chainageAvant(bdr, bdf_init)
      // Affichage des nouveaux faits obtenus
      afficheChangements(bdf_init, bdf_fwd, regles_util_fwd)
      
-     if( bdf_fwd.contains(hyp) ) println("\n==> Résultat : " + hyp.intitule + " est démontré")
-     else                        println("\n==> Résultat : " + hyp.intitule + " n’est pas démontrable")
+     if( bdf_fwd.contains(hyp) ) println("\n==> RÃ©sultat : " + hyp.intitule + " est dÃ©montrÃ©")
+     else                        println("\n==> RÃ©sultat : " + hyp.intitule + " nâ€™est pas dÃ©montrable")
 
      println("\n******************************************************************")
-     println("===> lancement du chainage arrière pour démontrer : " + hyp.intitule +"\n")
+     println("===> lancement du chainage arriÃ¨re pour dÃ©montrer : " + hyp.intitule +"\n")
      
      val (_, bdf_bwd, regles_util_bwd) = chainageArriere(bdr, bdf_init, hyp, Nil)
      // Affichage des nouveaux faits obtenus
      afficheChangements(bdf_init, bdf_bwd, regles_util_bwd)
      
-     if( bdf_bwd.contains(hyp) ) println("\n==> Résultat : " + hyp.intitule + " est démontré")
-     else                        println("\n==> Résultat : " + hyp.intitule + " n’est pas démontrable")
+     if( bdf_bwd.contains(hyp) ) println("\n==> RÃ©sultat : " + hyp.intitule + " est dÃ©montrÃ©")
+     else                        println("\n==> RÃ©sultat : " + hyp.intitule + " nâ€™est pas dÃ©montrable")
    }
    
    case class Fait(id:Int, intitule:String){
@@ -103,77 +102,77 @@ object Devoir {
        }
      }
    
-  /* Fonction permettant de généraliser les fonctions afficheBDFaits et afficheBDRegles de l'énoncé.
-   * Entrées: une liste d'élements A (bd) et un message d'introduction sous la forme d'une chaîne de caractères (intro_message).
-   * Sortie: le message d'introduction suivi de l'affichage de chacun des élements de la liste bd. */
+  /* Fonction permettant de gÃ©nÃ©raliser les fonctions afficheBDFaits et afficheBDRegles de l'Ã©noncÃ©.
+   * EntrÃ©es: une liste d'Ã©lements A (bd) et un message d'introduction sous la forme d'une chaÃ®ne de caractÃ¨res (intro_message).
+   * Sortie: le message d'introduction suivi de l'affichage de chacun des Ã©lements de la liste bd. */
   def afficheBase[A](bd:List[A], intro_message:String):Unit ={
       println(intro_message +"\n")
       bd.map(println)
       println()
   }
   
-  /* Fonction qui permet d'afficher les nouveaux faits obtenus après l'éxécution d'un chainage avant / arriere.
-   * Entrées: - la base de fait initiaux (bdf_init)
-   *          - la base de faits après l'éxécution du chainage (bdf_update) 
-   *          - la liste des regles utilisées pendant le chainage (reglesUtil)
-   * Sortie: Affichage de la difference entre la base de faits avant et après le chainage. */
+  /* Fonction qui permet d'afficher les nouveaux faits obtenus aprÃ¨s l'Ã©xÃ©cution d'un chainage avant / arriere.
+   * EntrÃ©es: - la base de fait initiaux (bdf_init)
+   *          - la base de faits aprÃ¨s l'Ã©xÃ©cution du chainage (bdf_update) 
+   *          - la liste des regles utilisÃ©es pendant le chainage (reglesUtil)
+   * Sortie: Affichage de la difference entre la base de faits avant et aprÃ¨s le chainage. */
   def afficheChangements (bdf_init: List[Fait], bdf_update: List[Fait], reglesUtil: List[Regle]):Unit ={
     if(reglesUtil == Nil) println("\nAucun nouveau fait obtenu\n")
     else { println("\n+++ Les nouveaux faits sont:\n"); (bdf_update diff bdf_init).map(println) }
            // On aurait aussi pu utiliser: reglesUtil.map({(r:Regle) => println(r.conclusion)})                         
   }
   
-  /* Fonction qui teste si une règle est applicable. Une règle est applicable si elle n’a pas déjà été utilisée
-   * et si tous les faits de son hypothèse sont dans la base de faits connus. 
-   * Entrées: - la règle à tester (r) 
-   * 					- la liste des règles utilisées (reglesUtil) 
+  /* Fonction qui teste si une rÃ¨gle est applicable. Une rÃ¨gle est applicable si elle nâ€™a pas dÃ©jÃ  Ã©tÃ© utilisÃ©e
+   * et si tous les faits de son hypothÃ¨se sont dans la base de faits connus. 
+   * EntrÃ©es: - la rÃ¨gle Ã  tester (r) 
+   * 					- la liste des rÃ¨gles utilisÃ©es (reglesUtil) 
    * 					- la base de faits connus (bdfConnus)
-   * Sortie: vrai si la règle est applicable et faux sinon. */
+   * Sortie: vrai si la rÃ¨gle est applicable et faux sinon. */
   def estApplicable(r: Regle, reglesUtil: List[Regle], bdfConnus: List[Fait]): Boolean ={
      !reglesUtil.contains(r) && r.hypothese.forall(bdfConnus.contains)
   }
   
-  /* Fonction qui applique la règle donnée en paramètre c’est à dire retourne comme résultat la liste des faits connus
-	 * dans laquelle on été ajouté tous les faits de la conclusion de la règle et la liste des règles utilisées dans
-	 * laquelle on a ajouté la règle appliquée.
-   * Entrées: - la règle à appliquer (r)
+  /* Fonction qui applique la rÃ¨gle donnÃ©e en paramÃ¨tre câ€™est Ã  dire retourne comme rÃ©sultat la liste des faits connus
+	 * dans laquelle on Ã©tÃ© ajoutÃ© tous les faits de la conclusion de la rÃ¨gle et la liste des rÃ¨gles utilisÃ©es dans
+	 * laquelle on a ajoutÃ© la rÃ¨gle appliquÃ©e.
+   * EntrÃ©es: - la rÃ¨gle Ã  appliquer (r)
    * 					- la base des faits connus (bdfConnus)
-   * 					- la liste des règles utilisées (reglesUtil)
-   * Sortie: un couple formé de la nouvelle base des faits et de la nouvelle liste des règles utilisées qui ont été mis à jour. */
+   * 					- la liste des rÃ¨gles utilisÃ©es (reglesUtil)
+   * Sortie: un couple formÃ© de la nouvelle base des faits et de la nouvelle liste des rÃ¨gles utilisÃ©es qui ont Ã©tÃ© mis Ã  jour. */
   def appliqueRegle(r: Regle, bdfConnus: List[Fait], reglesUtil: List[Regle]): (List[Fait], List[Regle]) ={
       ((bdfConnus union r.conclusion).distinct, r :: reglesUtil )
   }
   
   /* Fonction correspondant au chainage avant.
-   * Entrée : la base de règles (bdr) et une base de faits connus (bdfConnus)
-   * Sortie : la base de faits terminale, c’est à dire bdfConnus dans laquelle on a ajouté tous les nouveaux faits qui ont été
-	 * déduits au cours du raisonnement, et la liste des règles qui on été utilisées au cours le raisonnement. */
+   * EntrÃ©e : la base de rÃ¨gles (bdr) et une base de faits connus (bdfConnus)
+   * Sortie : la base de faits terminale, câ€™est Ã  dire bdfConnus dans laquelle on a ajoutÃ© tous les nouveaux faits qui ont Ã©tÃ©
+	 * dÃ©duits au cours du raisonnement, et la liste des rÃ¨gles qui on Ã©tÃ© utilisÃ©es au cours le raisonnement. */
   def chainageAvant(bdr : List[Regle], bdfConnus: List[Fait]): (List[Fait], List[Regle]) ={
      def sub(bdr_iter : List[Regle], bdf_update: List[Fait], reglesUtil: List[Regle]):(List[Fait], List[Regle]) = bdr_iter match {
        case Nil => (bdf_update, reglesUtil)
        case h::t => { if(!estApplicable(bdr_iter.head, reglesUtil, bdf_update)) sub(t, bdf_update, reglesUtil)
-                      else { println("<-- Application de la règle : " + h)
+                      else { println("<-- Application de la rÃ¨gle : " + h)
                              val (new_bdf, new_reglesUtil) = appliqueRegle(h, bdf_update, reglesUtil)
-                             // La base de faits ayant été modifiée, on éxécute sub en retournant au debut de la base de regles
+                             // La base de faits ayant Ã©tÃ© modifiÃ©e, on Ã©xÃ©cute sub en retournant au debut de la base de regles
                              sub(bdr, new_bdf, new_reglesUtil) }}
      } 
      sub(bdr, bdfConnus, List())
   }
   
-  /* Fonction permettant de récupérer la liste des règles dont la conclusion correspond à un fait donné en paramètre.
-   *  Entrée: la base de règle (bdr) et un fait (unFait)
-   *  Sortie: La liste des règle ayant unFait dans leur conclusion. */ 
+  /* Fonction permettant de rÃ©cupÃ©rer la liste des rÃ¨gles dont la conclusion correspond Ã  un fait donnÃ© en paramÃ¨tre.
+   *  EntrÃ©e: la base de rÃ¨gle (bdr) et un fait (unFait)
+   *  Sortie: La liste des rÃ¨gle ayant unFait dans leur conclusion. */ 
   def get_rules_from_conclusion(bdr : List[Regle], unFait: Fait) ={
     bdr.foldLeft(Nil:List[Regle])((r, c) => if(c.conclusion.contains(unFait)) (c :: r) else r)
   }
   
-  /* Fonction correspondant au chainage arrière.
-   * Entrée : - une base de règles (bdr)
+  /* Fonction correspondant au chainage arriÃ¨re.
+   * EntrÃ©e : - une base de rÃ¨gles (bdr)
    *  				- une base de faits connus (bdfConnus)
-   *  				- le fait à démontrer (unFait)
-   *  			  - la liste des règles utilisées (reglesUtil)
-   * Sortie : vrai si unFait est démontrable, faux sinon, la base de faits connus dans laquelle ont été ajoutés tous les nouveaux faits
-	 * ainsi que la liste des règles utilisées pendant le raisonnement. */
+   *  				- le fait Ã  dÃ©montrer (unFait)
+   *  			  - la liste des rÃ¨gles utilisÃ©es (reglesUtil)
+   * Sortie : vrai si unFait est dÃ©montrable, faux sinon, la base de faits connus dans laquelle ont Ã©tÃ© ajoutÃ©s tous les nouveaux faits
+	 * ainsi que la liste des rÃ¨gles utilisÃ©es pendant le raisonnement. */
   def chainageArriere(bdr : List[Regle], bdfi : List[Fait], unFait: Fait, reglesUtil:List[Regle]) : (Boolean, List[Fait], List[Regle]) ={
     if(bdfi.contains(unFait)){
        println("<-- " + unFait.intitule + " est dans la base des faits connus")
@@ -182,28 +181,28 @@ object Devoir {
     else {
       val list_match_rules = get_rules_from_conclusion(bdr, unFait)
       val (bool, lsF, lsR) = fromRules(bdr, bdfi, list_match_rules, reglesUtil)
-      bool match { case true  => println("(+) " + unFait + " est démontré"); (true, unFait :: lsF, lsR)
-                   case false => println("(x) " + unFait + " n'est pas démontrable"); (false, lsF, lsR)
+      bool match { case true  => println("(+) " + unFait + " est dÃ©montrÃ©"); (true, unFait :: lsF, lsR)
+                   case false => println("(x) " + unFait + " n'est pas dÃ©montrable"); (false, lsF, lsR)
       }
     }
   }
   
-  /* Fonction permettant de déterminer si au moins une règle d'une liste est applicable après éxécution du chainage arriere sur l'ensemble des hypothèses
-   * Entrée : identique à la fonction chainageArriere à l'exception du paramètre unFait qui est remplacé par une liste de règles (desRegles)
-   * Sortie : identique à la fonction chainageArriere */
+  /* Fonction permettant de dÃ©terminer si au moins une rÃ¨gle d'une liste est applicable aprÃ¨s Ã©xÃ©cution du chainage arriere sur l'ensemble des hypothÃ¨ses
+   * EntrÃ©e : identique Ã  la fonction chainageArriere Ã  l'exception du paramÃ¨tre unFait qui est remplacÃ© par une liste de rÃ¨gles (desRegles)
+   * Sortie : identique Ã  la fonction chainageArriere */
   def fromRules (bdr : List[Regle], bdfi : List[Fait], desRegles: List[Regle], reglesUtil:List[Regle]): (Boolean, List[Fait], List[Regle]) = desRegles match {
       case Nil => (false, bdfi, reglesUtil)
       case h::t => { val (bool, lsF, lsR) = fromFacts(bdr, bdfi, h.hypothese, reglesUtil)
-                     bool match { case true  =>  println("<-- Application de la règle: "+ h); (true, lsF, h :: lsR)
+                     bool match { case true  =>  println("<-- Application de la rÃ¨gle: "+ h); (true, lsF, h :: lsR)
                                   case false =>  fromRules(bdr, lsF, t, lsR) }}
   }
    
-  /* Fonction permettant de déterminer si l'ensemble des faits d'une liste peuvent être déduit après éxécution du chainage arriere sur chaque fait.
-   * Entrée: identique à la fonction chainageArriere à l'exception du paramètre unFait qui est remplacé par une liste de faits (desFaits)
-   * Sortie : identique à la fonction chainageArriere */
+  /* Fonction permettant de dÃ©terminer si l'ensemble des faits d'une liste peuvent Ãªtre dÃ©duit aprÃ¨s Ã©xÃ©cution du chainage arriere sur chaque fait.
+   * EntrÃ©e: identique Ã  la fonction chainageArriere Ã  l'exception du paramÃ¨tre unFait qui est remplacÃ© par une liste de faits (desFaits)
+   * Sortie : identique Ã  la fonction chainageArriere */
   def fromFacts(bdr : List[Regle], bdfi : List[Fait], desFaits: List[Fait], reglesUtil:List[Regle]): (Boolean, List[Fait], List[Regle]) = desFaits match {
       case Nil  => (true, bdfi, reglesUtil)
-      case h::t => { println("==> Je cherche à démontrer: "+ h); val (bool, lsF, lsR) = chainageArriere(bdr, bdfi, h, reglesUtil)
+      case h::t => { println("==> Je cherche Ã  dÃ©montrer: "+ h); val (bool, lsF, lsR) = chainageArriere(bdr, bdfi, h, reglesUtil)
                      bool match { case true  => fromFacts(bdr, lsF, t, lsR)
                                   case false => (false, lsF, lsR) }}
   }    
