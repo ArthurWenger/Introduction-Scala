@@ -1,2 +1,2 @@
 # Scala
-Experimentation de Scala
+Experimentation de Scala a travers divers exercices
